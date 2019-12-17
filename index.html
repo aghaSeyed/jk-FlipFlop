@@ -19,9 +19,9 @@
                 <div id="head" class="panel with-nav-tabs" style="width: 100%;">
                     <div class="panel-heading">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab1info" data-toggle="tab">Step 1</a></li>
-                            <li><a href="#tab2info" data-toggle="tab">Step 2</a></li>
-                            <li><a href="#tab3info" data-toggle="tab">Step 3</a></li>
+                            <li class="active"><a href="#tab1info" data-toggle="tab">CLK</a></li>
+                            <li><a href="#tab2info" data-toggle="tab">J</a></li>
+                            <li><a href="#tab3info" data-toggle="tab">K</a></li>
                             <li><a href="#tab4info" data-toggle="tab">Result</a></li>
 
                         </ul>
@@ -31,10 +31,10 @@
                             <div class="tab-pane fade in active" id="tab1info">
                                 <h3>Clock pulse</h3>
 
-                                <label>From:(secend)</label>
-                                <input id="x" name="x" value="0" type="text" style="width: 10%; margin-right: 100px;" readonly>
+                                <label>In second:</label>
+                                <input id="x" name="x" value="0" type="text" style="width: 30px; margin-right: 100px;" readonly>
                                 <img src="img/heartbeat.png" width="10%">
-                                <label style="margin-left: 100px;">To:(secend)</label>
+                                <label style="margin-left: 100px;">Pulse(Voltage):</label>
                                 <input id="y" type="number" style="width: 10%; margin-right: 100px;">
                                 <button id="add" type="" class="btn btn-submit">Add</button>
 
@@ -47,10 +47,10 @@
                             </div>
                             <div class="tab-pane fade in" id="tab2info">
                                 <h3>J Pin</h3>
-                                <label>From:(secend)</label>
-                                <input id="x_jPin" name="x" value="0" readonly type="text" style="width: 10%; margin-right: 100px;">
+                                <label>In second:</label>
+                                <input id="x_jPin" name="x" value="0" readonly type="text" style="width: 30px; margin-right: 100px;">
                                 <img src="img/heartbeat.png" width="10%">
-                                <label style="margin-left: 100px;">To:(secend)</label>
+                                <label style="margin-left: 100px;">Pulse(Voltage):</label>
                                 <input id="y_jPin" type="number" style="width: 10%; margin-right: 100px;">
                                 <button id="add_jPin" type="submit" class="btn btn-submit">Add</button>
                                 <button id="sub_jPin" class="btn btn-submit">Submit</button>
@@ -61,10 +61,10 @@
                             </div>
                             <div class="tab-pane fade in" id="tab3info">
                                 <h3>K Pin</h3>
-                                <label>From:(secend)</label>
-                                <input id="x_kPin" name="x" value="0" readonly type="text" style="width: 10%; margin-right: 100px;">
+                                <label>In second:</label>
+                                <input id="x_kPin" name="x" value="0" readonly type="text" style="width: 30px; margin-right: 100px;">
                                 <img src="img/heartbeat.png" width="10%">
-                                <label style="margin-left: 100px;">To:(secend)</label>
+                                <label style="margin-left: 100px;">Pulse(Voltage):</label>
                                 <input id="y_kPin" type="number" style="width: 10%; margin-right: 100px;">
                                 <button id="add_kPin" type="submit" class="btn btn-submit">Add</button>
                                 <button id="sub_kPin" class="btn btn-submit">Submit</button>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="tab-pane fade in" id="tab4info">
 
-                                <button class="btn btn-success btn-lg btn-block" type="submit" id="submit">Submit</button>
+                                <button class="btn btn-success btn-lg btn-block" style="margin-bottom: 50px;;" type="submit" id="submit">Run</button>
                                 <div id="result" style="display: none;">
                                     <div id="chart" style="height: 300px; width: 100%;margin-bottom: 30px;border: solid 2px black;display: none"></div>
                                     <div id="chart1" style="height: 300px; width: 100%;margin-bottom: 30px;border: solid 2px black;display: none"></div>
@@ -263,7 +263,7 @@
                     animationEnabled: true,
                     exportEnabled: true,
                     title: {
-                        text: "Set Pin"
+                        text: "K Pin"
                     },
                     axisY: {
                         title: "Voltage",
@@ -344,7 +344,7 @@
                     animationEnabled: true,
                     exportEnabled: true,
                     title: {
-                        text: "Reset pin"
+                        text: "Answer"
                     },
                     axisY: {
                         title: "Voltage",
