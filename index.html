@@ -294,17 +294,15 @@
             $("#submit").click(function() {
                 $("#result").css("display", "block");
                 for (var index = 0; index < xClk.length; index++) {
-                    if (index != 0 && yClk[index] == 5 && yClk[index - 1] == 0) {
+                    if (index != 0 && yClk[index] == 1 && yClk[index - 1] == 0) {
                         // Set
                         if (y_jPin[index] > y_kPin[index]) {
                             console.log("SET", index)
-                            x_f.push(index);
                             y_f.push(5);
                         }
                         // ReSet
                         else if (y_jPin[index] < y_kPin[index]) {
                             console.log("PRESET", index)
-                            x_f.push(index);
                             y_f.push(0);
                         }
                         // Latch
@@ -312,10 +310,8 @@
                             console.log("LATCH", index)
                             if (index != 0) {
                                 y_f.push(y_f[index - 1]);
-                                x_f.push(index);
                             } else {
                                 y_f.push(0);
-                                x_f.push(index);
                             }
                         }
                         // Toggle
@@ -326,14 +322,16 @@
                             } else {
                                 y_f.push(5);
                             }
-                            x_f.push(index);
                         }
                     } else {
-                        y_f.push(0);
-                        x_f.push(index)
+                        if (index == 0) {
+                            y_f.push(0);
+                        } else {
+                            y_f.push(y_f[index - 1])
+                        }
                     }
 
-
+                    x_f.push(index)
                 }
                 var node_fPin = [];
 
