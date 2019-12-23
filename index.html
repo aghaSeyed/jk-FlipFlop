@@ -294,7 +294,7 @@
             $("#submit").click(function() {
                 $("#result").css("display", "block");
                 for (var index = 0; index < xClk.length; index++) {
-                    if (index != 0 && yClk[index] == 1 && yClk[index - 1] == 0) {
+                    if (index != 0 && yClk[index] == 5 && yClk[index - 1] == 0) {
                         // Set
                         if (y_jPin[index] > y_kPin[index]) {
                             console.log("SET", index)
@@ -315,7 +315,7 @@
                             }
                         }
                         // Toggle
-                        else if (y_jPin[index] == 1 && y_kPin[index] == 1) {
+                        else if (y_jPin[index] == 5 && y_kPin[index] == 5) {
                             console.log("TOGGLE", index)
                             if (y_f[index - 1] == 5) {
                                 y_f.push(0);
