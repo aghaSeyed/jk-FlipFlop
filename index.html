@@ -134,8 +134,8 @@
         }
 
         window.onload = function() {
-            var xList = [];
-            var yList = [];
+            var xClk = [];
+            var yClk = [];
             var x_jPin = [];
             var y_jPin = [];
             var x_kPin = [];
@@ -147,10 +147,10 @@
             var index3 = 0;
 
             document.getElementById("add").addEventListener("click", function() {
-                xList.push(index1);
-                yList.push($("#y").val());
+                xClk.push(index1);
+                yClk.push($("#y").val());
                 $('#insert').append("[" + index1++ + " : " + $("#y").val() + "]" + "  ");
-                console.log(xList, yList);
+                console.log(xClk, yClk);
                 $("#y").val("");
                 $("#x").val(index1);
             });
@@ -173,8 +173,8 @@
             $('#sub').click(function() {
                 var node_clk = [];
                 $("#chartContainer").css("display", "block");
-                for (var index = 0; index < xList.length; index++) {
-                    node_clk.push(new Node(parseInt(xList[index], 10), parseInt(yList[index], 10)));
+                for (var index = 0; index < xClk.length; index++) {
+                    node_clk.push(new Node(parseInt(xClk[index], 10), parseInt(yClk[index], 10)));
                 }
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
@@ -209,13 +209,13 @@
 
                 chart.render();
                 console.log("clk");
-                console.log(xList, yList);
+                console.log(xClk, yClk);
             })
 
             $('#sub_jPin').click(function() {
                 var node_jPin = [];
                 $("#chartContainer1").css("display", "block");
-                for (var index = 0; index < xList.length; index++) {
+                for (var index = 0; index < xClk.length; index++) {
                     node_jPin.push(new Node(parseInt(x_jPin[index], 10), parseInt(y_jPin[index], 10)));
                 }
                 var chart1 = new CanvasJS.Chart("chartContainer1", {
@@ -256,7 +256,7 @@
                 var node_kPin = [];
                 $("#chartContainer2").css("display", "block");
 
-                for (var index = 0; index < xList.length; index++) {
+                for (var index = 0; index < xClk.length; index++) {
                     node_kPin.push(new Node(parseInt(x_kPin[index], 10), parseInt(y_kPin[index], 10)));
                 }
                 var chart2 = new CanvasJS.Chart("chartContainer2", {
@@ -293,18 +293,16 @@
             });
             $("#submit").click(function() {
                 $("#result").css("display", "block");
-                for (var index = 0; index < xList.length; index++) {
-                    if (index != 0 && yList[index] == 5 && yList[index - 1] == 0) {
+                for (var index = 0; index < xClk.length; index++) {
+                    if (index != 0 && yClk[index] == 5 && yClk[index - 1] == 0) {
                         // Set
                         if (y_jPin[index] > y_kPin[index]) {
                             console.log("SET", index)
-                            x_f.push(index);
                             y_f.push(5);
                         }
                         // ReSet
                         else if (y_jPin[index] < y_kPin[index]) {
                             console.log("PRESET", index)
-                            x_f.push(index);
                             y_f.push(0);
                         }
                         // Latch
@@ -312,32 +310,32 @@
                             console.log("LATCH", index)
                             if (index != 0) {
                                 y_f.push(y_f[index - 1]);
-                                x_f.push(index);
                             } else {
                                 y_f.push(0);
-                                x_f.push(index);
                             }
                         }
                         // Toggle
-                        else if (y_jPin[index] == 1 && y_kPin[index] == 1) {
+                        else if (y_jPin[index] == 5 && y_kPin[index] == 5) {
                             console.log("TOGGLE", index)
                             if (y_f[index - 1] == 5) {
                                 y_f.push(0);
                             } else {
                                 y_f.push(5);
                             }
-                            x_f.push(index);
                         }
                     } else {
-                        y_f.push(0);
-                        x_f.push(index)
+                        if (index == 0) {
+                            y_f.push(0);
+                        } else {
+                            y_f.push(y_f[index - 1])
+                        }
                     }
 
-
+                    x_f.push(index)
                 }
                 var node_fPin = [];
 
-                for (var index = 0; index < xList.length; index++) {
+                for (var index = 0; index < xClk.length; index++) {
                     node_fPin.push(new Node(parseInt(x_f[index], 10), parseInt(y_f[index], 10)));
                 }
                 var chart3 = new CanvasJS.Chart("chartContainer3", {
